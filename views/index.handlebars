@@ -1,12 +1,35 @@
+<p>Awaiting your belly!</p>
 <ul>
   {{#each burger}}
+        {{#unless this.devoured}}
     <li>
       <p>
-        {{this.id}}. {{this.burger_name}}
+        {{this.id}}. {{this.burger_name}} {{this.devoured}}
 
-        <button data-burgerid="{{this.id}}" class="delBurger">Devour</button>
+        <button data-burgerid="{{this.id}}" class="delBurger">Delete</button>
+        <button data-burgerid="{{this.id}}" class="devBurger">Devour</button>
       </p>
     </li>
+{{else}}
+        {{/unless}}
+  {{/each}}
+</ul>
+
+<p>Devoured</p>
+
+<ul>
+  {{#each burger}}
+        {{#if this.devoured}}
+    <li>
+      <p>
+        {{this.id}}. {{this.burger_name}} {{this.devoured}}
+
+        <button data-burgerid="{{this.id}}" class="delBurger">Delete</button>
+        <button data-burgerid="{{this.id}}" class="devBurger">Devour</button>
+      </p>
+    </li>
+{{else}}
+        {{/if}}
   {{/each}}
 </ul>
 
@@ -18,6 +41,15 @@
 
 <script type="text/javascript">
 {{!-- alert("Working!"); --}}
+
+{{!-- Handlebars.registerHelper("if_eq", function(a, b, opts) {
+  if (a == b) {
+    return opts.fn(this);
+  } else {
+    return opts.inverse(this);
+  }
+}); --}}
+
 $(".delBurger").on("click", function(event){
     var id = $(this).data("burgerid");
     $.ajax("/api/burgers/" + id, {
@@ -28,7 +60,7 @@ $(".delBurger").on("click", function(event){
             }
         )
     });
-    
+
 $("#addBurger").on("submit", function(event) {
     event.preventDefault();
     var newBurger = {
@@ -41,6 +73,27 @@ $("#addBurger").on("submit", function(event) {
     }).then(
       function() {
         console.log("added new burger");
+        location.reload();
+      }
+    );
+  });
+
+$(".devBurger").on("click", function(event) {
+    // Make sure to preventDefault on a submit event.
+    event.preventDefault();
+
+    var id = $(this).data("burgerid");
+
+    var updateDevour = {
+      devoured: 1
+};
+    $.ajax("/api/burgers/" + id, {
+      type: "PUT",
+      data: updateDevour
+    }).then(
+      function() {
+        console.log("updated id ", id);
+        // Reload the page to get the updated list
         location.reload();
       }
     );
