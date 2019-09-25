@@ -1,10 +1,17 @@
-<p>Awaiting your belly!</p>
+<div class="row">
+
+<div class="col-sm-12">
+<p class="text-center">Eat-Da-Burger!!</p>
+</div>
+<div class="col-sm-6 text-right">
+
+<p>Awaiting your belly:</p>
 <ul>
   {{#each burger}}
         {{#unless this.devoured}}
     <li>
       <p>
-        {{this.burger_name}}
+        {{this.id}}. {{this.burger_name}}
         {{!-- <button data-burgerid="{{this.id}}" class="delBurger">Delete</button> --}}
         <button data-burgerid="{{this.id}}" class="devBurger">Devour it!</button>
       </p>
@@ -13,15 +20,15 @@
         {{/unless}}
   {{/each}}
 </ul>
-
-<p class="text-center">Devoured</p>
-
+</div>
+<div class="col-sm-6 text-left">
+<p>Devoured:</p>
 <ul>
   {{#each burger}}
         {{#if this.devoured}}
     <li>
       <p>
-        {{this.burger_name}}
+        {{this.id}}. {{this.burger_name}}
         {{!-- <button data-burgerid="{{this.id}}" class="delBurger">Delete</button> --}}
       </p>
     </li>
@@ -29,13 +36,20 @@
         {{/if}}
   {{/each}}
 </ul>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-12 text-center">
 
 <h2>Add a burger to devour!!!</h2>
 <form id="addBurger" class="button-size">
 	<textarea type="text" name="burger_name"></textarea>
-	<button type="submit">Send your order</button>
+    <br>
+    <button type="submit">Send your order</button>
 </form>
 
+</div>
+</div>
 <script type="text/javascript">
 {{!-- alert("Working!"); --}}
 

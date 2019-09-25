@@ -1,4 +1,8 @@
 body {
-background-color: orange;
-color: maroon;
+background-color: #DEBA6F;
+color: #823038;
+}
+
+ul {
+    display: inline-block;
 }
