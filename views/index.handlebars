@@ -4,7 +4,7 @@
       <p>
         {{this.id}}. {{this.burger_name}}
 
-        <button data-burgerid="{{this.id}}" class="delBurger">Delete</button>
+        <button data-burgerid="{{this.id}}" class="delBurger">Devour</button>
       </p>
     </li>
   {{/each}}
@@ -17,9 +17,8 @@
 </form>
 
 <script type="text/javascript">
-alert("Working!");
+{{!-- alert("Working!"); --}}
 $(".delBurger").on("click", function(event){
-
     var id = $(this).data("burgerid");
     $.ajax("/api/burgers/" + id, {
         type: "DELETE"}).then(
@@ -29,4 +28,22 @@ $(".delBurger").on("click", function(event){
             }
         )
     });
+    
+$("#addBurger").on("submit", function(event) {
+    event.preventDefault();
+    var newBurger = {
+      burger_name: $("#addBurger [name=burger_name]").val().trim(),
+      devoured: 0,
+    };
+    $.ajax("/api/burgers", {
+      type: "POST",
+      data: newBurger
+    }).then(
+      function() {
+        console.log("added new burger");
+        location.reload();
+      }
+    );
+  });
+
 </script>
