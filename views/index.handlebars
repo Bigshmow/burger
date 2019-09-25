@@ -14,7 +14,7 @@
   {{/each}}
 </ul>
 
-<p>Devoured</p>
+<p class="text-center">Devoured</p>
 
 <ul>
   {{#each burger}}
@@ -23,7 +23,6 @@
       <p>
         {{this.burger_name}}
         {{!-- <button data-burgerid="{{this.id}}" class="delBurger">Delete</button> --}}
-        <button data-burgerid="{{this.id}}" class="devBurger">Devour it!</button>
       </p>
     </li>
 {{else}}
