@@ -4,10 +4,9 @@
         {{#unless this.devoured}}
     <li>
       <p>
-        {{this.id}}. {{this.burger_name}} {{this.devoured}}
-
-        <button data-burgerid="{{this.id}}" class="delBurger">Delete</button>
-        <button data-burgerid="{{this.id}}" class="devBurger">Devour</button>
+        {{this.burger_name}}
+        {{!-- <button data-burgerid="{{this.id}}" class="delBurger">Delete</button> --}}
+        <button data-burgerid="{{this.id}}" class="devBurger">Devour it!</button>
       </p>
     </li>
 {{else}}
@@ -22,10 +21,9 @@
         {{#if this.devoured}}
     <li>
       <p>
-        {{this.id}}. {{this.burger_name}} {{this.devoured}}
-
-        <button data-burgerid="{{this.id}}" class="delBurger">Delete</button>
-        <button data-burgerid="{{this.id}}" class="devBurger">Devour</button>
+        {{this.burger_name}}
+        {{!-- <button data-burgerid="{{this.id}}" class="delBurger">Delete</button> --}}
+        <button data-burgerid="{{this.id}}" class="devBurger">Devour it!</button>
       </p>
     </li>
 {{else}}
