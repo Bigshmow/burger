@@ -91,7 +91,6 @@ $("#addBurger").on("submit", function(event) {
 
 $(".devBurger").on("click", function(event) {
     event.preventDefault();
-    audio.play();
     var id = $(this).data("burgerid");
   console.log(audio);
     {{!-- alert("That is a tasty burger!"); --}}
@@ -105,6 +104,7 @@ $(".devBurger").on("click", function(event) {
     }).then(
       function() {
         console.log("updated id ", id);
+        audio.play();
         location.reload();
       }
     );
