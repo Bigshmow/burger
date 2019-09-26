@@ -81,8 +81,9 @@ $(".devBurger").on("click", function(event) {
     }).then(
       function() {
         console.log("updated id ", id);
-        location.reload();
-      }
-    );
+        setTimeout(function() {
+        location.reload();}, 4500);
+
+        });
   });
 </script>
