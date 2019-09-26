@@ -43,7 +43,7 @@
 <form id="addBurger" class="button-size">
 	<textarea type="text" name="burger_name"></textarea>
     <br>
-    <button type="submit">Send your order</button>
+    <button id="burgerButton" type="submit">Send your order</button>
 </form>
 
 </div>
@@ -54,6 +54,7 @@ var audio = new Audio("/assets/tastyBurger.mp3");
 
 $("#addBurger").on("submit", function(event) {
     event.preventDefault();
+    $(this).fadeToggle(1500);
     var newBurger = {
       burger_name: $("#addBurger [name=burger_name]").val().trim(),
       devoured: 0,
@@ -64,13 +65,14 @@ $("#addBurger").on("submit", function(event) {
     }).then(
       function() {
         console.log("added new burger");
-        location.reload();
-      }
-    );
+        setTimeout(function() {
+        location.reload();}, 2000);
+      });
   });
 $(".devBurger").on("click", function(event) {
     event.preventDefault();
     audio.play();
+    $(this).fadeToggle(4250);
     var id = $(this).data("burgerid");
     var updateDevour = {
       devoured: 1
@@ -83,7 +85,6 @@ $(".devBurger").on("click", function(event) {
         console.log("updated id ", id);
         setTimeout(function() {
         location.reload();}, 4500);
-
         });
   });
 </script>
