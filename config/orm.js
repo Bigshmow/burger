@@ -1,7 +1,5 @@
 var connection = require('./connection');
 
-var tableName = "burgers_tb";
-
 function printQuestionMarks(num) {
     var arr = [];
 

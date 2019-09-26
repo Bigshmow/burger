@@ -11,7 +11,7 @@ router.get("/", function(req, res) {
       res.render("index", hbsObject);
     });
   });
-// checking API
+
 router.get("/api/burgers", function(req, res) {
     burger.selectAll(function(data) {
       var hbsObject = {
