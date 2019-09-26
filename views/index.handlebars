@@ -51,7 +51,7 @@
 </div>
 </div>
 <script type="text/javascript">
-{{!-- alert("Working!"); --}}
+var audio = new Audio("/assets/tastyBurger.mp3");
 
 {{!-- Handlebars.registerHelper("if_eq", function(a, b, opts) {
   if (a == b) {
@@ -90,10 +90,11 @@ $("#addBurger").on("submit", function(event) {
   });
 
 $(".devBurger").on("click", function(event) {
-    // Make sure to preventDefault on a submit event.
     event.preventDefault();
-
+    audio.play();
     var id = $(this).data("burgerid");
+  console.log(audio);
+    {{!-- alert("That is a tasty burger!"); --}}
 
     var updateDevour = {
       devoured: 1
@@ -104,7 +105,6 @@ $(".devBurger").on("click", function(event) {
     }).then(
       function() {
         console.log("updated id ", id);
-        // Reload the page to get the updated list
         location.reload();
       }
     );
